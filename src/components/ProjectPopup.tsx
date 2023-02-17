@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { AStyle } from "../styles/AStyle";
 
 const PopupContainer = styled.div`
   width: 100%;
@@ -83,17 +84,8 @@ const Content = styled.div`
       flex-direction: column;
       margin: auto 0 0 auto;
       > a {
-        border-bottom: 2px solid rgb(0 0 0 / 00%);
-        font-size: 20px;
-        font-family: "Press Start 2P";
-        display: flex;
-        justify-content: flex-end;
-        > img {
-          width: 22px;
-          margin-left: 10px;
-        }
-        :hover {
-          border-bottom: 2px solid #000;
+        :first-child {
+          margin-bottom: 10px;
         }
       }
     }
@@ -123,17 +115,12 @@ export default function ProjectPopup({
               ))}
             </ul>
             <div>
-              <a
-                target="_black"
-                rel="noopener noreferrer"
-                style={{ marginBottom: 10 }}
-                href={project.url}
-              >
-                Website <img src={"https://static.thenounproject.com/png/1976606-200.png"} />
-              </a>
-              <a target="_black" rel="noopener noreferrer" href={project.gitUrl}>
+              <AStyle href={project.gitUrl}>
                 Github <img src={"https://static.thenounproject.com/png/1976606-200.png"} />
-              </a>
+              </AStyle>
+              <AStyle href={project.url}>
+                Website <img src={"https://static.thenounproject.com/png/1976606-200.png"} />
+              </AStyle>
             </div>
           </div>
         </Content>

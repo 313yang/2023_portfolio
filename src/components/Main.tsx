@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { puddle } from "../styles/Keyframes";
 import heart from "/heart.png";
+import bg from "/bg1.mp4";
+import rightArrow from "/arrowIcon.png";
+import { AStyle } from "../styles/AStyle";
 
 const Contaier = styled.section`
   display: flex;
@@ -11,12 +14,32 @@ const Contaier = styled.section`
   width: 100%;
   height: 100vh;
   position: fixed;
+  z-index: -1;
+  background-color: transparent;
   top: 0;
-  padding: 0 8%;
+  > video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
   .heart {
     position: fixed;
     animation: ${puddle} 3s linear;
     animation-fill-mode: forwards;
+  }
+  > a {
+    position: absolute;
+    z-index: 2;
+    bottom: 10%;
+    right: 8%;
+    font-size: 2vw;
+    :hover {
+      border-bottom: 2px solid #fff;
+    }
+    > img {
+      object-fit: contain;
+      width: 2vw;
+    }
   }
 `;
 
@@ -26,8 +49,10 @@ const TextStyle = styled.div`
   font-size: 6.3vw;
   line-height: 1.2;
   position: absolute;
-  margin: 0 8%;
-  z-index: 10;
+  padding: 0 8%;
+
+  width: 100%;
+
   > p {
     display: inline-flex;
     align-items: center;
@@ -94,6 +119,9 @@ function Main() {
   };
   return (
     <Contaier ref={sectionRef} onClick={setStates}>
+      <video muted autoPlay loop>
+        <source src={bg} type="video/mp4" />
+      </video>
       <TextStyle>
         <p>HELLO, </p>
 
@@ -109,6 +137,9 @@ function Main() {
         ))}
         <p>YANG BYEORI</p>
       </TextStyle>
+      <AStyle href={"https://github.com/313yang/2023_portfolio"}>
+        Github <img src={rightArrow} />
+      </AStyle>
     </Contaier>
   );
 }

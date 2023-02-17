@@ -6,6 +6,10 @@ import heart from "/heart.png";
 
 const MainStyle = styled.main`
   cursor: url(${heart}) 60 60, auto;
+  /* 
+  > section {
+    scroll-snap-align: center;
+  } */
 `;
 
 function App() {

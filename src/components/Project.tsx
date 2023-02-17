@@ -13,7 +13,11 @@ import icon4 from "/icon4.png";
 import icon5 from "/icon5.png";
 import projectUrl1 from "/projecturl1.png";
 import projectUrl2 from "/projecturl2.png";
+import work1 from "/work1.png";
+import work2 from "/work2.png";
+import work3 from "/work3.png";
 import ProjectPopup from "./ProjectPopup";
+import { AStyle } from "../styles/AStyle";
 
 const Container = styled.section`
   width: 100%;
@@ -39,7 +43,7 @@ const ProjectWrap = styled.div`
   width: 100%;
   margin: 0 auto;
   position: relative;
-  height: 70%;
+  height: 66%;
 `;
 const ImgButton = styled.button.attrs({ type: "button" })<{ cursorUrl: string }>`
   position: absolute;
@@ -57,14 +61,14 @@ const ImgButton = styled.button.attrs({ type: "button" })<{ cursorUrl: string }>
   :nth-child(2) {
     animation-delay: 0.2s;
     top: 0;
-    left: 21vw;
+    left: 20vw;
   }
   :nth-child(3) {
     > img {
       width: 25vw;
     }
     top: 10vw;
-    left: 38vw;
+    left: 36vw;
     animation: ${matrix} 3s ease-in-out infinite;
   }
   :nth-child(4) {
@@ -92,8 +96,21 @@ const WorkWrap = styled.div`
   justify-content: flex-end;
   margin: 0 0 0 auto;
   a {
-    font-size: 10vw;
-    margin-right: 12vw;
+    margin-right: 2vw;
+    > img {
+      width: 16vw;
+      animation: ${float} 5s ease-in-out infinite;
+    }
+    :first-child {
+      > img {
+        animation-duration: 4s;
+      }
+    }
+    :last-child {
+      > img {
+        animation-delay: 0.5s;
+      }
+    }
   }
 `;
 const projectArr = [
@@ -159,18 +176,25 @@ export default function Project() {
         <h2>Project</h2>
         <ProjectWrap>
           {projectArr.map((project) => (
-            <ImgButton onClick={() => setshowProject(project)} cursorUrl={project.cursor}>
+            <ImgButton
+              key={project.name}
+              onClick={() => setshowProject(project)}
+              cursorUrl={project.cursor}
+            >
               <img src={project.img} alt={project.sub} loading={"lazy"} title={project.name} />
             </ImgButton>
           ))}
         </ProjectWrap>
         <WorkWrap>
-          <a target="_black" rel="noopener noreferrer" href={"https://samlab.co.kr"}>
-            🏃‍♀️
-          </a>
-          <a target="_black" rel="noopener noreferrer" href={"https://classup.io"}>
-            👨‍🏫
-          </a>
+          <AStyle href={"https://samlab.co.kr/aboutus"}>
+            <img title="samlab-webpage" src={work1} alt="work project icon" />
+          </AStyle>
+          <AStyle href={"https://samlab.co.kr/letmeup"}>
+            <img title="samlab-webpage" src={work2} alt="work project icon" />
+          </AStyle>
+          <AStyle href={"https://classup.io"}>
+            <img title="classup-webpage" src={work3} alt="work project icon" />
+          </AStyle>
           <h2>Work</h2>
         </WorkWrap>
       </Container>

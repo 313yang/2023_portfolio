@@ -45,6 +45,11 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+html,body{
+	width: 100%;
+  height: 100%;
+  scroll-snap-type: y proximity;
+}
 body {
 	line-height: 1;
     font-family: 'Montserrat';
