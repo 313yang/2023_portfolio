@@ -1,14 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import styled, { css } from "styled-components";
-const HeartCSS = css`
-  font-size: 10rem;
-  text-shadow: 2px 5px 10px rgba(255, 255, 255, 0.5), -4px -4px 8px rgba(214, 214, 214, 0.8);
-  color: #000;
-  cursor: initial;
-  user-select: none;
-  position: fixed;
-  mix-blend-mode: overlay;
-`;
+import styled from "styled-components";
+import heart from "/heart.png";
+
 const Contaier = styled.section`
   display: flex;
   flex-direction: column;
@@ -20,6 +13,8 @@ const Contaier = styled.section`
   top: 0;
   padding: 0 8%;
   .heart {
+    position: fixed;
+
     @keyframes puddle {
       0% {
         transform: translate(0, 0);
@@ -35,7 +30,6 @@ const Contaier = styled.section`
         opacity: 0;
       }
     }
-    ${HeartCSS}
 
     animation-name: puddle;
     animation-duration: 3s;
@@ -47,8 +41,10 @@ const TextStyle = styled.div`
   display: flex;
   flex-wrap: wrap;
   font-size: 6.3vw;
-  /* font-size: 40px; */
   line-height: 1.2;
+  position: absolute;
+  margin: 0 8%;
+  z-index: 10;
   > p {
     display: inline-flex;
     align-items: center;
@@ -60,10 +56,7 @@ const TextStyle = styled.div`
     transition: color 0.2s ease-in-out;
   }
 `;
-const Cursor = styled.div`
-  ${HeartCSS}
-  z-index: 1;
-`;
+
 const Text = styled.p<{ color: string; font: string }>`
   color: ${({ color }) => color};
   font-family: ${({ font }) => font};
@@ -102,35 +95,38 @@ function Main() {
   }, [font]);
 
   const handleCreateHeart = (e: MouseEvent) => {
-    const div = document.createElement("div");
-    div.innerText = "♥";
-    div.className = "heart";
-    div.style.fontSize = `${Math.random() * 10 + 4}rem`;
-    div.style.top = `${e.clientY - 60}px`;
-    div.style.left = `${e.clientX - 60}px`;
-    sectionRef?.current?.appendChild(div);
-    setTimeout(() => sectionRef?.current?.removeChild(div), 1500);
+    if (trigger) return;
+    trigger = true;
+    const img = document.createElement("img");
+    const size = Math.random() * 10 + 4;
+    img.className = "heart";
+    img.src = heart;
+    img.style.width = `${size}rem`;
+    img.style.height = `${size}rem`;
+    img.style.top = `${e.clientY - 60}px`;
+    img.style.left = `${e.clientX - 60}px`;
+    sectionRef?.current?.appendChild(img);
+    setTimeout(() => sectionRef?.current?.removeChild(img), 1500);
+    setTimeout(() => (trigger = false), 90);
   };
   return (
-    <>
-      <Contaier ref={sectionRef}>
-        <TextStyle>
-          <p>HELLO, </p>
+    <Contaier ref={sectionRef} onClick={setStates}>
+      <TextStyle>
+        <p>HELLO, </p>
 
-          {subArr.map((list, index) => (
-            <Text key={list} font={font[index]} color={color[index]}>
-              {list}{" "}
-            </Text>
-          ))}
-          {textArr.map((list, index) => (
-            <Text key={list} font={font[index]} color={color[index]}>
-              {list}
-            </Text>
-          ))}
-          <p>YANG BYEORI</p>
-        </TextStyle>
-      </Contaier>
-    </>
+        {subArr.map((list, index) => (
+          <Text key={list} font={font[index]} color={color[index]}>
+            {list}{" "}
+          </Text>
+        ))}
+        {textArr.map((list, index) => (
+          <Text key={list} font={font[index]} color={color[index]}>
+            {list}
+          </Text>
+        ))}
+        <p>YANG BYEORI</p>
+      </TextStyle>
+    </Contaier>
   );
 }
 
