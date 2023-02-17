@@ -5,11 +5,15 @@ const Container = styled.section`
   height: 100vh;
   background-color: #000;
   position: sticky;
-  z-index: 10;
-  margin-top: 100vh;
-  top: 200vh;
+  z-index: 4;
+  /* margin-top: 100vh; */
+  top: 00vh;
 `;
 
 export default function Contact() {
-  return <Container></Container>;
+  return (
+    <Container>
+      <p>Contact</p>
+    </Container>
+  );
 }

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { puddle } from "../styles/Keyframes";
 import heart from "/heart.png";
 
 const Contaier = styled.section`
@@ -14,25 +15,7 @@ const Contaier = styled.section`
   padding: 0 8%;
   .heart {
     position: fixed;
-
-    @keyframes puddle {
-      0% {
-        transform: translate(0, 0);
-        opacity: 1;
-      }
-
-      30% {
-        transform: translate(5%, -5%);
-      }
-
-      100% {
-        transform: translate(-5%, -15%);
-        opacity: 0;
-      }
-    }
-
-    animation-name: puddle;
-    animation-duration: 3s;
+    animation: ${puddle} 3s linear;
     animation-fill-mode: forwards;
   }
 `;
@@ -98,7 +81,7 @@ function Main() {
     if (trigger) return;
     trigger = true;
     const img = document.createElement("img");
-    const size = Math.random() * 10 + 4;
+    const size = Math.random() * 15 + 4;
     img.className = "heart";
     img.src = heart;
     img.style.width = `${size}rem`;
