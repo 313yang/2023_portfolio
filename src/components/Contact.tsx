@@ -20,7 +20,6 @@ const Container = styled.section`
     position: absolute;
     width: 100%;
     height: 100vh;
-
     top: 0;
     h2 {
       padding: 4%;
@@ -29,11 +28,22 @@ const Container = styled.section`
     }
     > div {
       width: 100%;
-      margin-top: 3vw;
+      height: 84vh;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    > div {
+      h2 {
+        font-size: 5vw;
+        padding: 10% 8% 0;
+      }
+      > div {
+        height: 91vh;
+      }
     }
   }
 `;
@@ -56,6 +66,16 @@ const Button = styled(AStyle)<{ cursorUrl: string }>`
   :hover {
     border-bottom: 5px solid #fff;
   }
+  @media screen and (max-width: 500px) {
+    font-size: 5vw;
+    padding: 5vw 3vw;
+    width: 60vw;
+    margin-bottom: 4vw;
+    > img {
+      width: 5vw;
+      margin-left: 3vw;
+    }
+  }
 `;
 export default function Contact() {
   return (
@@ -73,10 +93,10 @@ export default function Contact() {
             Github
             <img src={rightArrow} />
           </Button>
-          <Button href="" cursorUrl="https://cdn-icons-png.flaticon.com/512/25/25231.png">
+          {/* <Button href="" cursorUrl="https://cdn-icons-png.flaticon.com/512/25/25231.png">
             Resume
             <img src={rightArrow} />
-          </Button>
+          </Button> */}
           <Button
             href="https://coconut-answer-2e3.notion.site/Ambitious-Frontend-Developer-YangByeori-6ca11f9ef56544acb65844f93293c8ec"
             cursorUrl="https://cdn-icons-png.flaticon.com/512/25/25231.png"

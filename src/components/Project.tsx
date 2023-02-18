@@ -36,6 +36,12 @@ const Container = styled.section`
     position: absolute;
     z-index: 30;
   }
+  @media screen and (max-width: 500px) {
+    padding: 10% 8% 0;
+    h2 {
+      font-size: 5vw;
+    }
+  }
 `;
 const ProjectWrap = styled.div`
   display: flex;
@@ -44,6 +50,9 @@ const ProjectWrap = styled.div`
   margin: 0 auto;
   position: relative;
   height: 66%;
+  @media screen and (max-width: 500px) {
+    height: 70%;
+  }
 `;
 const ImgButton = styled.button.attrs({ type: "button" })<{ cursorUrl: string }>`
   position: absolute;
@@ -88,6 +97,40 @@ const ImgButton = styled.button.attrs({ type: "button" })<{ cursorUrl: string }>
     top: 3vw;
     right: 0;
   }
+  @media screen and (max-width: 500px) {
+    > img {
+      width: 40vw;
+    }
+    :first-child {
+      top: 10vw;
+    }
+    :nth-child(2) {
+      top: 0;
+      left: 40vw;
+    }
+    :nth-child(3) {
+      > img {
+        width: 50vw;
+      }
+      top: 44vw;
+      left: -10vw;
+    }
+    :nth-child(4) {
+      > img {
+        width: 28vw;
+      }
+      top: 52vw;
+      right: 29vw;
+    }
+    :last-child {
+      > img {
+        width: 32vw;
+      }
+
+      top: 46vw;
+      right: 0;
+    }
+  }
 `;
 const WorkWrap = styled.div`
   width: 100%;
@@ -109,6 +152,26 @@ const WorkWrap = styled.div`
     :last-child {
       > img {
         animation-delay: 0.5s;
+      }
+    }
+  }
+  @media screen and (max-width: 500px) {
+    position: relative;
+    a {
+      position: absolute;
+      margin-right: 0vw;
+      bottom: -25vw;
+      left: 30vw;
+      > img {
+        width: 29vw;
+      }
+      :first-child {
+        bottom: -23vw;
+        left: -5vw;
+      }
+      :nth-child(2) {
+        bottom: -23vw;
+        right: -4vw;
       }
     }
   }
