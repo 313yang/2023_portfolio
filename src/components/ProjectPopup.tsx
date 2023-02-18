@@ -22,6 +22,12 @@ const PopupContainer = styled.div`
     box-shadow: 2px 2px 10px rgb(0 0 0 / 50%);
     cursor: auto;
   }
+  @media screen and (max-width: 500px) {
+    > div {
+      width: 90%;
+      height: 80vh;
+    }
+  }
 `;
 const Header = styled.div`
   display: flex;
@@ -41,6 +47,13 @@ const Header = styled.div`
     background: no-repeat url("https://newjeans.kr/imgs/window/pc/btn-folder-close.png");
     background-size: 24px;
   }
+  @media screen and (max-width: 500px) {
+    > button {
+      width: 22px;
+      height: 21px;
+      background-size: 21px;
+    }
+  }
 `;
 const Content = styled.div`
   display: flex;
@@ -56,16 +69,17 @@ const Content = styled.div`
   > div {
     width: 25%;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
-    > h1 {
+    h1 {
       font-weight: 800;
       font-size: 24px;
       margin-bottom: 1vw;
     }
-    > p {
+    p {
       color: rgb(0 0 0 / 50%);
     }
-    > ul {
+    ul {
       display: flex;
       flex-wrap: wrap;
       gap: 10px 5px;
@@ -77,7 +91,7 @@ const Content = styled.div`
         border-radius: 99px;
       }
     }
-    > div {
+    > div:last-child {
       /* width: 100%; */
       text-align: right;
       display: flex;
@@ -88,6 +102,19 @@ const Content = styled.div`
           margin-bottom: 10px;
         }
       }
+    }
+  }
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    height: calc(100% - 40px);
+    > img {
+      width: 100%;
+      height: 46vw;
+    }
+    > div {
+      width: 100%;
+      height: 100%;
+      margin: 5vw 0;
     }
   }
 `;
@@ -108,12 +135,15 @@ export default function ProjectPopup({
         <Content>
           <img src={project.projectImg} alt={project.name} />
           <div>
-            <h1>{project.name}</h1> <p>{project.sub}</p>
-            <ul>
-              {project.stack.map((stack) => (
-                <li key={stack}>{stack}</li>
-              ))}
-            </ul>
+            <div>
+              <h1>{project.name}</h1> <p>{project.sub}</p>
+              <ul>
+                {project.stack.map((stack) => (
+                  <li key={stack}>{stack}</li>
+                ))}
+              </ul>
+            </div>
+
             <div>
               <AStyle href={project.gitUrl}>
                 Github <img src={"https://static.thenounproject.com/png/1976606-200.png"} />

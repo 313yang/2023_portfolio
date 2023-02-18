@@ -21,6 +21,8 @@ const Container = styled.section`
     width: 100%;
     height: 100vh;
     top: 0;
+    display: flex;
+    flex-direction: column;
     h2 {
       padding: 4%;
       font-size: 3vw;
@@ -28,7 +30,7 @@ const Container = styled.section`
     }
     > div {
       width: 100%;
-      height: 84vh;
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -40,9 +42,6 @@ const Container = styled.section`
       h2 {
         font-size: 5vw;
         padding: 10% 8% 0;
-      }
-      > div {
-        height: 91vh;
       }
     }
   }
