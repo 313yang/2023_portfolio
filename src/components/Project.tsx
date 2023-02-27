@@ -180,7 +180,7 @@ const projectArr = [
   {
     name: "Soundy",
     sub: "스포티파이 플레이리스트 기반 음악 스트리밍 사이트",
-    url: "https://soundy-playlist.vercel.app/",
+    url: "https://soundy-playlist.link/",
     gitUrl: "https://github.com/313yang/playlist",
     img: soundyImg,
     projectImg: projectUrl1,
